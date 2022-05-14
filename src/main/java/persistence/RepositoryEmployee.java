@@ -35,7 +35,7 @@ public class RepositoryEmployee {
     public void updateEmployeeSalary(int employeeId, int newSalary){
         try {
             this.entityManager.getTransaction().begin();
-            String sql = "UPDATE Employee SET employeeId = :id AND salary = :nSalary";
+            String sql = "UPDATE Employee SET salary = :nSalary WHERE employeeId = :id ";
             entityManager.createQuery(sql)
                     .setParameter("id", employeeId)
                     .setParameter("nSalary", newSalary)

@@ -14,6 +14,11 @@ public class MainTest {
         employee1.setEmail("billygreen@gmail.com");
 
         RepositoryEmployee repositoryEmployee = new RepositoryEmployee();
+        /*
         repositoryEmployee.saveEmployee(employee1);
+        repositoryEmployee.updateEmployeeSalary(1,5555);
+        repositoryEmployee.deleteEmployee(employee1);
+        */
+
     }
 }
