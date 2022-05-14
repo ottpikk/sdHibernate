@@ -1,42 +1,43 @@
 package persistence;
 
+import model.Department;
 import model.Project;
 import util.DbUtil;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class RepositoryProject {
+public class RepositoryDepartment {
     private EntityManager entityManager;
 
-    public RepositoryProject(){
+    public RepositoryDepartment(){
         this.entityManager = DbUtil.getEntityManager();
     }
 
-    public void saveProject(Project project){
+    public void saveProject(Department department){
         try {
             this.entityManager.getTransaction().begin();
-            this.entityManager.persist(project);
+            this.entityManager.persist(department);
             this.entityManager.getTransaction().commit();
         } catch (Exception e){
             this.entityManager.getTransaction().rollback();
         }
     }
 
-    public void updateProject(Project project){
+    public void updateDepartment(Department department){
         try {
             this.entityManager.getTransaction().begin();
-            this.entityManager.merge(project);
+            this.entityManager.merge(department);
             this.entityManager.getTransaction().commit();
         } catch (Exception e){
             this.entityManager.getTransaction().rollback();
         }
     }
 
-    public void deleteProject(Project project){
+    public void deleteDepartment(Department department){
         try {
             this.entityManager.getTransaction().begin();
-            this.entityManager.remove(entityManager.merge(project));
+            this.entityManager.remove(entityManager.merge(department));
             this.entityManager.getTransaction().commit();
         } catch (Exception e){
             e.printStackTrace();
@@ -44,12 +45,13 @@ public class RepositoryProject {
         }
     }
 
-    public List<Project> listAllProjects(){
+    public List<Project> listAllDepartment(){
         String sql = "FROM Project";
         return this.entityManager.createQuery(sql).getResultList();
     }
 
-    public Project findProjectById(int projectId){
+    public Project findProjectById(int departmentId){
         return null;
     }
+
 }
