@@ -49,9 +49,10 @@ public class RepositoryEmployee {
     public void deleteEmployee(Employee employee){
         try {
             this.entityManager.getTransaction().begin();
-            this.entityManager.remove(employee);
+            this.entityManager.remove(entityManager.merge(employee));
             this.entityManager.getTransaction().commit();
         } catch (Exception e){
+            e.printStackTrace();
             this.entityManager.getTransaction().rollback();
         }
     }
