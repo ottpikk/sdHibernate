@@ -18,11 +18,16 @@ public class MainTest {
 
         RepositoryEmployee repositoryEmployee = new RepositoryEmployee();
 
-        repositoryEmployee.saveEmployee(employee1);
         /*
+        repositoryEmployee.saveEmployee(employee1);
         repositoryEmployee.updateEmployeeSalary(1,5555);
         repositoryEmployee.deleteEmployee(employee1);
         */
+        for (Employee emp : repositoryEmployee.listAllEmployees()) {
+            System.out.println(emp.toString());
+        }
+
+
 
     }
 }

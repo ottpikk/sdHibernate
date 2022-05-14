@@ -57,8 +57,22 @@ public class RepositoryEmployee {
         }
     }
 
+    public void deleteEmployeeUsingQuery(int employeeId){
+        try {
+            this.entityManager.getTransaction().begin();
+            String sql = "DELETE Employee WHERE employeeId = :id ";
+            entityManager.createQuery(sql)
+                    .setParameter("id", employeeId)
+                    .executeUpdate();
+            this.entityManager.getTransaction().commit();
+        } catch (Exception e){
+            this.entityManager.getTransaction().rollback();
+        }
+    }
+
     public List<Employee> listAllEmployees(){
-        return null;
+        String sql = "FROM Employee";
+        return this.entityManager.createQuery(sql).getResultList();
     }
 
     public Employee findEmployeeById(int employeeId){
