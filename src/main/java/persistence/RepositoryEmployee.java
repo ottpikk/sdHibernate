@@ -12,6 +12,7 @@ public class RepositoryEmployee {
     public RepositoryEmployee(){
         this.entityManager = DbUtil.getEntityManager();
     }
+
     public void saveEmployee(Employee employee){
         try {
             this.entityManager.getTransaction().begin();
@@ -76,6 +77,13 @@ public class RepositoryEmployee {
     }
 
     public Employee findEmployeeById(int employeeId){
-        return null;
+        return this.entityManager.find(Employee.class, employeeId);
+    }
+
+    public Employee findEmployeeByIdUsingQuery(int employeeId){
+        String sql = "FROM Employee WHERE employeeId = :id";
+        return this.entityManager.createQuery(sql, Employee.class)
+                .setParameter("id", employeeId)
+                .getSingleResult();
     }
 }
