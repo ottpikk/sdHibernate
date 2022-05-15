@@ -33,6 +33,7 @@ public class MainTest {
 
 
         /*
+        //Employee
         repositoryEmployee.saveEmployee(employee1);
         repositoryEmployee.updateEmployeeSalary(1,5555);
         repositoryEmployee.deleteEmployee(employee1);
@@ -40,17 +41,23 @@ public class MainTest {
             System.out.println(emp.toString());
         }
         repositoryEmployee.deleteEmployeeUsingQuery(3);
+        System.out.println(repositoryEmployee.findEmployeeById(4));
+        System.out.println(repositoryEmployee.findEmployeeByIdUsingQuery(5));
 
+        //Project
         repositoryProject.saveProject(project1);
         repositoryProject.updateProject(project1);
         repositoryProject.deleteProject(project1);
 
+
+        //Department
         repositoryDepartment.saveDepartment(department);
 
-        System.out.println(repositoryEmployee.findEmployeeById(4));
-        System.out.println(repositoryEmployee.findEmployeeByIdUsingQuery(3));
         */
-
+        for (Department dept:
+             repositoryDepartment.listAllDepartment()) {
+            System.out.println(dept);
+        }
 
 
 

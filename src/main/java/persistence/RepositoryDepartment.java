@@ -45,8 +45,8 @@ public class RepositoryDepartment {
         }
     }
 
-    public List<Project> listAllDepartment(){
-        String sql = "FROM Project";
+    public List<Department> listAllDepartment(){
+        String sql = "FROM Department";
         return this.entityManager.createQuery(sql).getResultList();
     }
 
