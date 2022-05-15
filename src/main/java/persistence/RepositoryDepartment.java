@@ -14,7 +14,7 @@ public class RepositoryDepartment {
         this.entityManager = DbUtil.getEntityManager();
     }
 
-    public void saveProject(Department department){
+    public void saveDepartment(Department department){
         try {
             this.entityManager.getTransaction().begin();
             this.entityManager.persist(department);
