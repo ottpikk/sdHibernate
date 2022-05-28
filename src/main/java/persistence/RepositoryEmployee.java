@@ -1,6 +1,7 @@
 package persistence;
 
 import model.Employee;
+import model.EmployeeDepartment;
 import util.DbUtil;
 
 import javax.persistence.EntityManager;
@@ -86,4 +87,24 @@ public class RepositoryEmployee {
                 .setParameter("id", employeeId)
                 .getSingleResult();
     }
+
+    public List<Employee> findEmployeeByDepartmentName(String departmentName){
+        String sql = "FROM Employee e WHERE e.department.name = :deptName";
+        return this.entityManager.createQuery(sql, Employee.class)
+                .setParameter("deptName", departmentName)
+                .getResultList();
+    }
+
+    public List<EmployeeDepartment> listEmployeeWithDepartmentName(){
+        String sql = "SELECT new model.EmployeeDepartment(e.employeeId, e.firstName, e.salary, d.name) "+
+                "FROM Employee e JOIN e.department d";
+
+        String sql2 = "SELECT new model.EmployeeDepartment(e.employeeId, e.firstName, e.salary, e.department.name) "+
+                "FROM Employee e";
+        return this.entityManager.createQuery(sql, EmployeeDepartment.class)
+                .getResultList();
+    }
+
+
+
 }

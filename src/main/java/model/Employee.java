@@ -21,6 +21,32 @@ public class Employee {
     private int salary;
     private String phoneNumber;
 
+    //add foreign key column departmentId
+    @ManyToOne
+    @JoinColumn(name = "department_Id")
+    private Department department;
+
+    //add foreign key from same class
+    @ManyToOne
+    @JoinColumn(name = "manager_Id")
+    private Employee manager;
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Employee getManager() {
+        return manager;
+    }
+
+    public void setManager(Employee manager) {
+        this.manager = manager;
+    }
+
     public int getEmployeeId() {
         return employeeId;
     }
@@ -87,6 +113,8 @@ public class Employee {
                 ", email='" + email + '\'' +
                 ", salary=" + salary +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", department=" + department +
+                ", manager=" + manager +
                 '}';
     }
 }

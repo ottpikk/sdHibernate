@@ -1,40 +1,28 @@
 package model;
 
+import javax.persistence.*;
+
+@Entity
 public class EmployeeProject {
-    private int employeeProject;
-    private int employeeId;
-    private int projectId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int employeeProjectId;
 
-    public int getEmployeeProject() {
-        return employeeProject;
+    // add foreign keys
+    @ManyToOne
+    @JoinColumn(name = "projectId")
+    private Project project;
+    @ManyToOne
+    @JoinColumn(name = "employeeId")
+    private Employee employee;
+
+
+
+    public int getEmployeeProjectId() {
+        return employeeProjectId;
     }
 
-    public void setEmployeeProject(int employeeProject) {
-        this.employeeProject = employeeProject;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public int getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(int projectId) {
-        this.projectId = projectId;
-    }
-
-    @Override
-    public String toString() {
-        return "EmployeeProject{" +
-                "employeeProject=" + employeeProject +
-                ", employeeId=" + employeeId +
-                ", projectId=" + projectId +
-                '}';
+    public void setEmployeeProjectId(int employeeProjectId) {
+        this.employeeProjectId = employeeProjectId;
     }
 }
